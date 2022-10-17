@@ -1,6 +1,6 @@
 import s from './style.module.css';
 
-function Layout({ title, desc, urlBg, colorBg }) {
+function Layout({ title, urlBg, colorBg, children }) {
 	const sectionStyle = {};
 	if (urlBg) {
 		sectionStyle.backgroundImage = `url(${urlBg})`;
@@ -18,7 +18,7 @@ function Layout({ title, desc, urlBg, colorBg }) {
 						<span className={s.separator}></span>
 					</div>
 					<div className={`${s.desc} ${s.full}`}>
-						<p>{desc}</p>
+						{children}
 					</div>
 				</article>
 			</div>
