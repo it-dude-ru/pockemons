@@ -1,28 +1,22 @@
-import './App.css';
-import Header from './components/Header/header';
-import Layout from './components/Layout/layout';
-import Footer from './components/Footer/footer';
-import bg1 from './assets/bg1.jpg';
-import bg2 from './assets/bg2.jpg';
-import POKEMONS from './assets/pokemones.json';
-import PokemonCard from './components/PokemonCard/pokemon-card';
+import {useState} from 'react';
+import GamePage from './routes/Game/game';
+import HomePage from './routes/Home/home';
 
-function App() {
-	return (
-		<>
-			<Header title='This is title' desc='This is Description!' />
-			<Layout urlBg={ bg1 } />
-			<Layout colorBg='red'>
-				<div className="flex">
-					{
-						POKEMONS.map(item => <PokemonCard key = {item.id} {...item} />)
-					}
-				</div>
-			</Layout>
-			<Layout urlBg={ bg2 } />
-			<Footer />
-		</>
-	);
+
+const App = () => {
+	const [page, setPage] = useState('app');
+	const handleChangePage = (page) => {
+		setPage(page);
+		console.log('App');
+	}
+	switch (page) {
+		case 'app':
+			return <HomePage onChangePage={handleChangePage}/>
+		case 'game':
+			return <GamePage />
+		default:
+			return <HomePage />
+	}
 }
 
 export default App;
