@@ -3,7 +3,6 @@ import s from './style.module.css';
 function Header({ title, desc, onClickButton }) {
 	const handleClick = () => {
 		onClickButton && onClickButton('game');
-		console.log('Header');
 	}
 	return (
 		<header className={s.root}>

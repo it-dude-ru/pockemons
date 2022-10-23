@@ -1,20 +1,18 @@
-import './style.module.css';
 import Header from '../../components/Header/header';
 import Layout from '../../components/Layout/layout';
-import Footer from '../../components/Footer/footer';
 import bg3 from '../../assets/bg3.jpg';
 import bg2 from '../../assets/bg2.jpg';
 import POKEMONS from '../../assets/pokemones.json';
 import PokemonCard from '../../components/PokemonCard/pokemon-card';
-import MenuHeader from '../../components/MenuHeader/menu-header';
+import './style.module.css';
 
 function HomePage({onChangePage}) {
 	const handleClickButton = (page) => {
+		console.log('Home page' + page);
 		onChangePage && onChangePage(page);
 	}
 	return (
 		<>
-			<MenuHeader />
 			<Header
 				title='This is title'
 				desc='This is Description!'
@@ -32,7 +30,6 @@ function HomePage({onChangePage}) {
 				</div>
 			</Layout>
 			<Layout urlBg={bg2} />
-			<Footer />
 		</>
 	);
 }
