@@ -4,13 +4,13 @@ import Navbar from '../Navbar/navbar';
 
 const MenuHeader = ({ bgActive }) => {
 	const [isOpen, setOpen] = useState(null);
-	const handleClockHamburg = () => {
+	const handleClick = () => {
 		setOpen(prevState => !prevState);
 	}
 	return (
 		<>
-			<Menu isOpen={isOpen} />
-			<Navbar isOpen={isOpen} bgActive={bgActive} onClickHamburg={handleClockHamburg} />
+			<Menu isOpen={isOpen} handleClick={handleClick} />
+			<Navbar isOpen={isOpen} bgActive={bgActive} onClickHamburg={handleClick} />
 		</>
 	)
 }

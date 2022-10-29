@@ -21,14 +21,14 @@ const MENU = [
 	},
 ];
 
-const Menu = ({isOpen}) => {
+const Menu = ({isOpen, handleClick}) => {
 	return (
 		<div className={cn(s.menuContainer, {
 			[s.active]: isOpen === true,
 			[s.deactive]: isOpen === false
 		})}>
 			<div className={s.overlay} />
-			<div className={s.menuItems}>
+			<div className={s.menuItems} onClick={handleClick}>
 				<ul>
 					{
 						MENU.map(({ title, to }, index) => (

@@ -1,18 +1,36 @@
+import { useState } from 'react';
+import Layout from '../../components/Layout/layout';
+import POKEMONS from '../../assets/pokemones.json';
+import PokemonCard from '../../components/PokemonCard/pokemon-card';
+
 import './style.module.css';
 
-const GamePage = ({ onChangePage }) => {
-	const handleClick = () => {
-		onChangePage && onChangePage('home');
+const GamePage = () => {
+	const [pokemons, setPokemons] = useState(POKEMONS);
+	const handleChangeActive = (id) => {
+		setPokemons(prevState => {
+			return Array.from(prevState, (item) => {
+				if (item.id === id) item.active = true;
+				return item;
+			});
+		});
 	}
 	return (
-		<>
-			<div>
-				<h1>This is Game Page!!!</h1>
-			</div>
-			<button onClick={handleClick}>
-				Back Home
-			</button>
-		</>
+		<div className="flex">
+			{
+				pokemons.map(({ name, img, id, type, values, active }) => (
+					<PokemonCard
+						key={id}
+						name={name}
+						img={img}
+						id={id}
+						type={type}
+						values={values}
+						isActive={active}
+						onClickCard={handleChangeActive}
+					/>))
+			}
+		</div>
 	)
 }
 
