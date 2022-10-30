@@ -1,10 +1,11 @@
-import {useState} from 'react';
 import cn from 'classnames';
 import cardBackSide from './assets/card-back-side.jpg';
 import s from './style.module.css';
 
 const PokemonCard = ({ name, img, id, type, values, isActive, onClickCard }) => {
-	const handleClick = id => onClickCard(id);
+	const handleClick = () => {
+		return onClickCard(id);
+	}
 	return (
 		<div className={s.root} onClick={handleClick}>
 			<div className={cn(s.pokemonCard, { [s.active]: isActive })}>

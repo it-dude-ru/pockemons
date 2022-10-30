@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Layout from '../../components/Layout/layout';
 import POKEMONS from '../../assets/pokemones.json';
 import PokemonCard from '../../components/PokemonCard/pokemon-card';
 
