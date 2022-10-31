@@ -1,11 +1,20 @@
-import { useState } from 'react';
-import POKEMONS from '../../assets/pokemones.json';
+import { useState, useEffect } from 'react';
+//import POKEMONS from '../../assets/pokemones.json';
 import PokemonCard from '../../components/PokemonCard/pokemon-card';
+
+import database from '../../services/firebase';
 
 import './style.module.css';
 
 const GamePage = () => {
-	const [pokemons, setPokemons] = useState(POKEMONS);
+	const [pokemons, setPokemons] = useState({});
+
+	useEffect(() => {
+		database.ref('pokemons').once('value', (snapshot) => {
+			setPokemons(snapshot.val());
+		})
+	}, [])
+
 	const handleChangeActive = (id) => {
 		setPokemons(prevState => {
 			return Array.from(prevState, (item) => {
@@ -17,7 +26,7 @@ const GamePage = () => {
 	return (
 		<div className="flex">
 			{
-				pokemons.map(({ name, img, id, type, values, active }) => (
+				Object.entries(pokemons).map(([key, { name, img, id, type, values, active }]) => (
 					<PokemonCard
 						key={id}
 						name={name}

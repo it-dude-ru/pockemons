@@ -6,8 +6,9 @@ import Contact from './routes/Contact/contact';
 import GamePage from './routes/Game/game';
 import HomePage from './routes/Home/home';
 import cn from 'classnames';
-import s from './style.module.css';
 import NotFound from './routes/NotFound/not-found';
+
+import s from './style.module.css';
 
 const App = () => {
 	const match = useRouteMatch('/');
