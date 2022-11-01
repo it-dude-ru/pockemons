@@ -17,11 +17,22 @@ const GamePage = () => {
 
 	const handleChangeActive = (id) => {
 		setPokemons(prevState => {
-			return Array.from(prevState, (item) => {
-				if (item.id === id) item.active = true;
-				return item;
-			});
+			return Object.entries(prevState).reduce((acc, item) => {
+				const pokemon = { ...item[1] };
+				if (pokemon.id === id) {
+					pokemon.active = true;
+				};
+				acc[item[0]] = pokemon;
+				return acc;
+			}, {});
 		});
+
+		// setPokemons(prevState => {
+		// 	return Array.from(prevState, (item) => {
+		// 		if (item.id === id) item.active = true;
+		// 		return item;
+		// 	});
+		// });
 	}
 	return (
 		<div className="flex">
