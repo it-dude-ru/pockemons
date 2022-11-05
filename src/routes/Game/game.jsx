@@ -43,14 +43,15 @@ const GamePage = () => {
 		});
 	}
 
-	useEffect(getPokemons(), []);
+	useEffect(() => {getPokemons()}, []);
 
 	const handleChangeActive = (id) => {
 		setPokemons(prevState => {
 			return Object.entries(prevState).reduce((acc, item) => {
+				console.log('item### ', item);
 				const pokemon = { ...item[1] };
 				if (pokemon.id === id) {
-					pokemon.active = true;
+					pokemon.active = !pokemon.active;
 				};
 				acc[item[0]] = pokemon;
 				database.ref('pokemons/' + item[0]).set(pokemon);
