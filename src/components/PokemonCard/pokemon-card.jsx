@@ -4,7 +4,7 @@ import s from './style.module.css';
 
 const PokemonCard = ({ className, name, img, id, type, values, minimize, isActive, isSelected, onClickCard  }) => {
 	const handleClick = () => {
-		return onClickCard(id);
+		onClickCard && onClickCard(id);
 	}
 	return (
 		<div
