@@ -10,6 +10,22 @@ import s from './style.module.css';
 //const BASE_API_URL = 'http://zar-marathon.it-dude.ru/api/pokemons/';
 const BASE_API_URL = 'https://reactmarathon-api.netlify.app/api/';
 
+const counterWin = (board, player1, player2) => {
+	let player1Count = player1.length;
+	let player2Count = player1.length;
+
+	board.forEach(item => {
+		if ((item.card.possession === 'red')) {
+			player2Count++;
+		}
+
+		if ((item.card.possession === 'blue')) {
+			player1Count++;
+		}
+	});
+	return [player1Count, player2Count];
+}
+
 const BoardPage = () => {
 	const { pokemons } = useContext(PokemonContext);
 
@@ -17,11 +33,12 @@ const BoardPage = () => {
 	const [player1, setPlayer1] = useState(() => {
 		return Object.values(pokemons).map(item => ({
 			...item,
-			posession: 'blue',
+			possession: 'blue',
 		}))
 	});
 	const [player2, setPlayer2] = useState([]);
 	const [choiseCard, setChoiseCard] = useState(null);
+	const [steps, setSteps] = useState(0);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -34,7 +51,7 @@ const BoardPage = () => {
 			setPlayer2(() => {
 				return player2Request.data.map(item => ({
 					...item,
-					posession: 'red',
+					possession: 'red',
 				}))
 			});
 		}
@@ -59,9 +76,34 @@ const BoardPage = () => {
 
 			const request = await res.json();
 
-			console.log('request.data ', request.data);
+			if (choiseCard.player === 1) {
+				setPlayer1(prevState => prevState.filter(item => item.id != choiseCard.id));
+			}
+			if (choiseCard.player === 2) {
+				setPlayer2(prevState => prevState.filter(item => item.id != choiseCard.id));
+			}
+
+			setBoard(request.data);
+			setSteps(prevState => {
+				const count = prevState + 1;
+				return count;
+			})
 		}
 	}
+
+	useEffect(() => {
+		if (steps === 9) {
+			const [count1, count2] = counterWin(board, player1, player2);
+
+			if (count1 > count2) {
+				alert('WIN');
+			} else if (count1 < count2) {
+				alert('LOSE');
+			} else {
+				alert('DRAW');
+			}
+		}
+	}, [steps]);
 
 	return (
 		<div className={s.root}>
@@ -80,7 +122,7 @@ const BoardPage = () => {
 							className={s.boardPlate}
 							onClick={() => !item.card && handleClickBoardPlate(item.position)}
 						>
-							{item.card && <PokemonCard {...item} minimize />}
+							{item.card && <PokemonCard {...item.card} isActive minimize />}
 						</div>
 					))
 				}
