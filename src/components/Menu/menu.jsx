@@ -33,7 +33,7 @@ const Menu = ({isOpen, handleClick}) => {
 					{
 						MENU.map(({ title, to }, index) => (
 							<li key={index}>
-								<Link to={to}>
+								<Link to={`/${to}`}>
 									{title}
 								</Link>
 							</li>
