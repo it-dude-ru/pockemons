@@ -2,13 +2,13 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 
 const firebaseConfig = {
-	apiKey: "AIzaSyCY72hxOqedwEY1SGRSN-aVIPyQwm9XbVs",
-	authDomain: "pokemons-962f7.firebaseapp.com",
-	databaseURL: "https://pokemons-962f7-default-rtdb.firebaseio.com",
-	projectId: "pokemons-962f7",
-	storageBucket: "pokemons-962f7.appspot.com",
-	messagingSenderId: "104119477606",
-	appId: "1:104119477606:web:6306213ba3346ee1cfd4a7"
+	apiKey: "AIzaSyB3tdi1d5vkDBVGKaL9TGGr8_fY_UGJ3Yw",
+	authDomain: "pokemons01.firebaseapp.com",
+	databaseURL: "https://pokemons01-default-rtdb.europe-west1.firebasedatabase.app",
+	projectId: "pokemons01",
+	storageBucket: "pokemons01.appspot.com",
+	messagingSenderId: "86674983099",
+	appId: "1:86674983099:web:81623adb2a2e0b308a019e"
 };
 
 firebase.initializeApp(firebaseConfig);
