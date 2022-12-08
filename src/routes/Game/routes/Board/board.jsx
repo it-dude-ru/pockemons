@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import PokemonCard from '../../../../components/PokemonCard/pokemon-card';
 import { PokemonContext } from '../../../../context/pokemon-context';
 import PlayerBoard from './PlayerBoard/player-board';
@@ -77,10 +76,10 @@ const BoardPage = () => {
 			const request = await res.json();
 
 			if (choiseCard.player === 1) {
-				setPlayer1(prevState => prevState.filter(item => item.id != choiseCard.id));
+				setPlayer1(prevState => prevState.filter(item => item.id !== choiseCard.id));
 			}
 			if (choiseCard.player === 2) {
-				setPlayer2(prevState => prevState.filter(item => item.id != choiseCard.id));
+				setPlayer2(prevState => prevState.filter(item => item.id !== choiseCard.id));
 			}
 
 			setBoard(request.data);

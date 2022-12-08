@@ -3,11 +3,17 @@ import Layout from '../../components/Layout/layout';
 import bg3 from '../../assets/bg3.jpg';
 import bg2 from '../../assets/bg2.jpg';
 import './style.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { plusAction } from '../../store/counter';
 
-function HomePage({onChangePage}) {
-	const handleClickButton = (page) => {
-		console.log('Home page' + page);
-		onChangePage && onChangePage(page);
+function HomePage() {
+
+	const count = useSelector((state) => state.value);
+	console.log('count ', count);
+	const dispatch = useDispatch();
+
+	const handleClickButton = () => {
+		dispatch(plusAction(1));
 	}
 	return (
 		<>
