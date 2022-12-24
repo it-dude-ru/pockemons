@@ -36,7 +36,7 @@ const PokemonCard = ({ className, name, img, id, type, values, minimize, isActiv
 			</div>
 			<div className={s.cardBack}>
 				<div className={cn(s.wrap, s.back)}>
-					<img src={cardBackSide} alt="Сard Backed" />
+					<img src={cardBackSide} alt="Card Backed" />
 				</div>
 			</div>
 		</div>
