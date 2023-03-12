@@ -18,8 +18,8 @@ function HomePage() {
 	return (
 		<>
 			<Header
-				title='This is title'
-				desc='This is Description!'
+				title='Pokemons'
+				desc='The game from "ReactJS" course of Zar Zakharov'
 				onClickButton={handleClickButton}
 			/>
 			<Layout urlBg={bg3} title='Rules'>
