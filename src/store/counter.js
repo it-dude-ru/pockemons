@@ -10,7 +10,7 @@ export const slice = createSlice({
 			...state,
 			value: state.value + action.payload
 		}),
-		plusMinus: (state, action) => ({
+		minusAction: (state, action) => ({
 			...state,
 			value: state.value - action.payload
 		}),

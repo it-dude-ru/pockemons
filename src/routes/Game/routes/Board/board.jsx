@@ -11,7 +11,7 @@ const BASE_API_URL = 'https://reactmarathon-api.netlify.app/api/';
 
 const counterWin = (board, player1, player2) => {
 	let player1Count = player1.length;
-	let player2Count = player1.length;
+	let player2Count = player2.length;
 
 	board.forEach(item => {
 		if ((item.card.possession === 'red')) {

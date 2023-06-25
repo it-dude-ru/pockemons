@@ -14,7 +14,7 @@ import FirebaseClass from './services/firebase';
 
 const App = () => {
 	const location = useLocation();
-	const isPadding = location.pathname === '/' || location.pathname === '/game/board';
+	const isPadding = location.pathname === '/' || location.pathname === '/game/board' || location.pathname === '/home';
 	return (
 		<FireBaseContext.Provider value={ FirebaseClass }>
 			<Switch>
