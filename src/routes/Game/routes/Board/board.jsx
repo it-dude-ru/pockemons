@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import PokemonCard from '../../../../components/PokemonCard/pokemon-card';
 import { PokemonContext } from '../../../../context/pokemon-context';
 import PlayerBoard from './PlayerBoard/player-board';
@@ -27,6 +28,11 @@ const counterWin = (board, player1, player2) => {
 
 const BoardPage = () => {
 	const { pokemons } = useContext(PokemonContext);
+	const history = useHistory();
+
+	if (Object.keys(pokemons).length === 0) {
+		history.replace('/game');
+	}
 
 	const [board, setBoard] = useState([]);
 	const [player1, setPlayer1] = useState(() => {
