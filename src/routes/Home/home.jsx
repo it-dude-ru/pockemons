@@ -3,17 +3,10 @@ import Layout from '../../components/Layout/layout';
 import bg3 from '../../assets/bg3.jpg';
 import bg2 from '../../assets/bg2.jpg';
 import './style.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { plusAction, selectCount } from '../../store/counter';
 
 function HomePage() {
 
-	const count = useSelector(selectCount);
-	console.log('count ', count);
-	const dispatch = useDispatch();
-
 	const handleClickButton = () => {
-		dispatch(plusAction(1));
 	}
 	return (
 		<>
